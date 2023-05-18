@@ -8,11 +8,11 @@
 
 ![Chat Application 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Chat%20Application%201.png)
 
-![Chat Application 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Chat%20Application%202.png)
+![Chat Application 2](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Chat%20Application%202.png)
 
 ### Client
 
-![Client 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%201.png)
+<img src="https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%201.png" width=1000 height=200>
 
 ![Client 2](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%202.png)
 
