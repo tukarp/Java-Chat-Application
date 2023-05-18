@@ -12,7 +12,7 @@
 
 ### Client
 
-<img src="https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%201.png" width=1000 height=200>
+![Client 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%201.png)
 
 ![Client 2](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%202.png)
 
