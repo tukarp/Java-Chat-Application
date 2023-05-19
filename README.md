@@ -24,7 +24,7 @@
 
 ![Server](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Server.png)
 
-## Requirements
+### Requirements
 
 - ```Java 17```
 - ```JavaFX```
