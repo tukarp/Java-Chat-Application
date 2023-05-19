@@ -2,11 +2,6 @@
 
 ## Chat Application with GUI and Server to host communication.
 
-## Requirements
-
-- ```Java 17```
-- ```JavaFX```
-
 ## Screenshots
 
 ### Login Popup
@@ -29,10 +24,13 @@
 
 ![Server](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Server.png)
 
+## Requirements
+
+- ```Java 17```
+- ```JavaFX```
+
 ### installation
 
-Clone repository
-
 ```
-https://github.com/tukarp/Java-Chat-Application.git
+git clone https://github.com/tukarp/Java-Chat-Application.git
 ```
