@@ -1,28 +1,16 @@
 # Java Chat Application
 
-## Chat Application with GUI and Server to host communication.
+## About
 
-## Screenshots
+### Description
 
-### Login Popup
+![Java Chat Application](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Java%20Chat%20Application.png)
 
-![Login Popup](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Login%20Popup.png)
+## Project Showcase
 
-### Chat Application
 
-![Chat Application 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Chat%20Application%201.png)
 
-![Chat Application 2](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Chat%20Application%202.png)
-
-### Client
-
-![Client 1](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%201.png)
-
-![Client 2](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Client%202.png)
-
-### Server
-
-![Server](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Server.png)
+## Download
 
 ### Requirements
 

@@ -11,7 +11,7 @@ import java.io.File;
 
 // MainContainer class
 public class MainContainer {
-    // Assign variables
+    // Allocate variables
     ServerThread serverThread;      // Server thread
     ClientGUIReceiver receiver;     // Receiver
 
@@ -48,15 +48,17 @@ public class MainContainer {
     @FXML
     private ProgressBar fileProgressBar;
 
-    // Send file button method
+    // Send file on button click method
     @FXML
     protected void onSendButtonClick() {
+        // Call send method
         send();
     }
 
-    // Enter input method
+    // On input enter method
     @FXML
-    public void onInputEnter(ActionEvent actionEvent){
+    public void onInputEnter(ActionEvent actionEvent) {
+        // Call send method
         send();
     }
 
@@ -64,20 +66,20 @@ public class MainContainer {
     private void send() {
         // Get text from input field
         String text = inputField.getText();
-        // Broadcast text
+        // Broadcast text to all clients
         serverThread.broadcast(text);
     }
 
-    // Send file button method
+    // Send file button on click method
     @FXML
     private void onSendFileButtonClick() {
         // Create a new file chooser
         FileChooser fileChooser = new FileChooser();
-        // File chooser dialog title
+        // File chooses shows open dialog
         File file = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
-        // If file is not null
+        // Check if file is not null
         if(file != null) {
-            // Send file to selected client
+            // Server thread sends file to client list selected item
             serverThread.sendFile(clientList.getSelectionModel().getSelectedItem().toString(), file.getAbsolutePath());
         }
     }
@@ -87,8 +89,8 @@ public class MainContainer {
         // Clear client list
         clientList.getItems().clear();
         // For each client name in client names list
-        clientNames.stream()
-                .forEach(name -> clientList.getItems().add(name));
+        clientNames.stream()  // Client names stream
+                .forEach(name -> clientList.getItems().add(name));  // Add client by name to client list
     }
 
     // Show broadcast method
@@ -99,15 +101,15 @@ public class MainContainer {
         outputArea.setScrollTop(Double.MAX_VALUE);
     }
 
-    // Add to clients list method
+    // Add client to clients list method
     public void addToClients(String clientName) {
         // Add client name to client list
         clientList.getItems().add(clientName);
     }
 
-    // Remove from clients list method
+    // Remove client from clients list method
     public void removeFromClients(String clientName) {
-        // Remove client from client list
+        // Remove client from client list by name
         clientList.getItems().remove(clientName);
     }
 

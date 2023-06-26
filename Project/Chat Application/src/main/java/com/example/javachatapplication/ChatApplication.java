@@ -11,14 +11,29 @@ import java.util.Optional;
 
 // Create ChatApplication class
 public class ChatApplication extends Application {
+    // Initialize logo
+    private static final String LOGO = """
+                   __                     ________          __     ___                ___            __  _          \s
+                  / /___ __   ______ _   / ____/ /_  ____ _/ /_   /   |  ____  ____  / (_)________ _/ /_(_)___  ____\s
+             __  / / __ `/ | / / __ `/  / /   / __ \\/ __ `/ __/  / /| | / __ \\/ __ \\/ / / ___/ __ `/ __/ / __ \\/ __ \\
+            / /_/ / /_/ /| |/ / /_/ /  / /___/ / / / /_/ / /_   / ___ |/ /_/ / /_/ / / / /__/ /_/ / /_/ / /_/ / / / /
+            \\____/\\__,_/ |___/\\__,_/   \\____/_/ /_/\\__,_/\\__/  /_/  |_/ .___/ .___/_/_/\\___/\\__,_/\\__/_/\\____/_/ /_/\s
+                                                                     /_/   /_/                                      \s""";
+
     // Override the start method
     @Override
     public void start(Stage stage) throws IOException {
+        // Print logo
+        System.out.println(LOGO);
+
+        // Server thread
         // Create a new server thread with given host and port
         ServerThread serverThread = new ServerThread("localhost", 5000);
 
-        // Create a new receiver
+        // Client GUI receiver
+        // Create a new client GUI receiver
         ClientGUIReceiver receiver = new ClientGUIReceiver();
+
         // Set receiver for server thread
         serverThread.setReceiver(receiver);
         // Set server thread as daemon
@@ -26,14 +41,17 @@ public class ChatApplication extends Application {
         // Start server thread
         serverThread.start();
 
+        // FMXL loader
         // Create a new FXML loader
         FXMLLoader fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("view.fxml"));
-        // Set controller factory
+        // Set fxml loader controller factory
         fxmlLoader.setControllerFactory(controllerClass -> new MainContainer(serverThread, receiver));
 
-        // Create a new scene
+        // Scene
+        // Create a new scene with given width and height
         Scene scene = new Scene(fxmlLoader.load(), 640, 480);
 
+        // Text input dialog
         // Create a new text input dialog
         TextInputDialog dialog = new TextInputDialog();
         // Set dialog title to "Login"
@@ -48,7 +66,7 @@ public class ChatApplication extends Application {
         // Create a new string for login
         String login = null;
 
-        // If result is present
+        // Check if result is present
         if(result.isPresent()) {
             // Set login to result
             login = result.get();

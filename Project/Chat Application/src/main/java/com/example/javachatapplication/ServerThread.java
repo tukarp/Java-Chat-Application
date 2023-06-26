@@ -7,38 +7,38 @@ import java.io.*;
 
 // ServerThread class
 public class ServerThread extends Thread {
-    // Assign variables
-    private Socket socket;  // Socket
-    private PrintWriter writer;  // Writer
-    private ClientReceiver receiver = null; // Receiver
+    // Allocate variables
+    private ClientReceiver receiver = null;     // Receiver
+    private PrintWriter writer;                 // Writer
+    private Socket socket;                      // Socket
 
     // Constructor
     public ServerThread(String address, int port) {
         try {
-            // Create socket with address and port
+            // Create socket with given address and port
             socket = new Socket(address, port);
         } catch (IOException e) {
-            // Print stack trace if error occurs
+            // Catch IOException
             e.printStackTrace();
         }
     }
 
-    // Set receiver
+    // Set receiver method
     public void setReceiver(ClientReceiver receiver) {
         // Set receiver
         this.receiver = receiver;
     }
 
-    // Run server thread
+    // Run server thread method
     public void run(){
         try {
             // Create input and output streams
-            InputStream input = socket.getInputStream();
-            OutputStream output = socket.getOutputStream();
+            InputStream input = socket.getInputStream();     // Input stream
+            OutputStream output = socket.getOutputStream();  // Output stream
 
             // Create reader and writer
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            writer = new PrintWriter(output, true);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));  // Reader
+            writer = new PrintWriter(output, true);  // Writer
 
             // Create message buffer
             String message;
@@ -46,8 +46,8 @@ public class ServerThread extends Thread {
             // while message is not null
             while((message = reader.readLine()) != null) {
                 // Get prefix and postfix of message
-                String prefix = message.substring(0,2);
-                String postfix = message.substring(2);
+                String prefix = message.substring(0,2);           // Prefix
+                String postfix = message.substring(2);  // Postfix
 
                 // Print message
                 System.out.println(message);
@@ -73,42 +73,42 @@ public class ServerThread extends Thread {
                 }
             }
         } catch (IOException e) {
-            // Print stack trace if error occurs
+            // Catch IOException
             e.printStackTrace();
         }
     }
 
-    // Login client
+    // Login method
     public void login(String name) {
-        // Send login message to server
+        // Write login message
         writer.println("LO" + " " + name);
     }
 
-    // Send online message
+    // Online method
     public void online() {
-        // Send online message to server
+        // Write online message
         writer.println("ON");
     }
 
-    // Send broadcast message
+    // Broadcast method
     public void broadcast(String message) {
-        // Send broadcast message to server
+        // Write broadcast message
         writer.println("BR" + " " + message);
     }
 
-    // Send message
+    // Send method
     private void send(String message){
-        // Send message to server
+        // Write send message
         writer.println(message);
     }
 
-    // Send whisper message
+    // Whisper method
     public void whisper(String message) {
-        // Send whisper message to server
+        // Write whisper message
         writer.println("WH" + message);
     }
 
-    // Send file
+    // Send file method
     public void sendFile(String recipientName, String filePath) {
         // Create file object with file path
         File file = new File(filePath);
@@ -121,13 +121,13 @@ public class ServerThread extends Thread {
             writer.println("FI" + recipientName + " " + fileSize + " " + file.getName());
 
             // Create file input and output streams
-            FileInputStream fileIn = new FileInputStream(file);
-            DataOutputStream fileOut = new DataOutputStream(socket.getOutputStream());
+            FileInputStream fileIn = new FileInputStream(file);                         // File input stream
+            DataOutputStream fileOut = new DataOutputStream(socket.getOutputStream());  // File output stream
 
             // Create file buffer, sent size and counter
-            byte[] buffer = new byte[64];
-            long sentSize = 0;
-            int counter;
+            byte[] buffer = new byte[64];  // Buffer
+            long sentSize = 0;  // Sent size
+            int counter;  // Counter
 
             // While file is not fully sent
             while((counter = fileIn.read(buffer)) > 0) {
@@ -143,12 +143,12 @@ public class ServerThread extends Thread {
             // Close file input stream
             fileIn.close();
         } catch (IOException e) {
-            // Print stack trace if error occurs
+            // Catch IOException
             e.printStackTrace();
         }
     }
 
-    // Receive file
+    // Receive file method
     public void receiveFile(String command) {
         // Split command into array
         String[] commandArray = command.split(" ");
@@ -156,21 +156,21 @@ public class ServerThread extends Thread {
         String senderName = commandArray[0];
 
         // Get file size and file name
-        long fileSize = Long.parseLong(commandArray[1]);
-        String fileName = commandArray[2];
+        long fileSize = Long.parseLong(commandArray[1]);  // File size
+        String fileName = commandArray[2];  // File name
 
         try {
             // File object with temporary directory and file name
             File file = new File(String.valueOf(Path.of(System.getProperty("java.io.tmpdir")).resolve(fileName)));
 
             // Create file input stream and file output stream
-            DataInputStream fileIn = new DataInputStream(socket.getInputStream());
-            FileOutputStream fileOut = new FileOutputStream(file);
+            DataInputStream fileIn = new DataInputStream(socket.getInputStream());  // File input stream
+            FileOutputStream fileOut = new FileOutputStream(file);                  // File output stream
 
             // Create file buffer, received size and counter
-            byte[] buffer = new byte[64];
-            long receivedSize = 0;
-            int counter;
+            byte[] buffer = new byte[64];  // Buffer
+            long receivedSize = 0;  // Received size
+            int counter;  // Counter
 
             // Print receiving file message
             System.out.println("Receiving file from " + senderName + "...");
@@ -194,7 +194,7 @@ public class ServerThread extends Thread {
             // Print file saved message
             System.out.println("File saved as: " + file.getAbsoluteFile());
         } catch (IOException e) {
-            // Print stack trace if error occurs
+            // Catch IOException
             e.printStackTrace();
         }
     }
