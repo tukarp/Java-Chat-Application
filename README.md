@@ -2,7 +2,7 @@
 
 ## About
 
-### This repository contains my *Java* implementation of *Chat Application*. This project was primarily developed during my *Object Oriented Programming* classes in 2022, with subsequent updates, code changes and finalization completed by me. It features *Server*, *JavaFX Desktop Application* and *Graphical User Interface*.
+### This repository contains my *Java* implementation of *Chat Application*. This project was primarily developed during my *Object Oriented Programming* classes in 2022, with subsequent updates, code changes and finalization completed by me. It features *Server*, *JavaFX Desktop Application* and *JavaFX Graphical User Interface*.
 
 ![Java Chat Application](https://github.com/tukarp/Java-Chat-Application/blob/main/Images/Java%20Chat%20Application.png)
 
